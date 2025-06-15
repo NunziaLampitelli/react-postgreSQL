@@ -1,8 +1,9 @@
+import "./pages-css/home.css";
+
 export default function Home() {
   return (
     <>
-    <div>
-      <h1>Homepage</h1>
+    <div className="home-page">
     </div>
     </>
   )

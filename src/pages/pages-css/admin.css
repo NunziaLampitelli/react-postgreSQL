@@ -1,0 +1,59 @@
+/* Admin.css */
+
+.admin-container {
+	padding: 20px;
+	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.admin-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	max-width: 800px;
+	margin-bottom: 20px;
+}
+
+.admin-header h1 {
+	margin: 0;
+}
+
+.admin-header button {
+	padding: 8px 12px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.admin-tabs {
+	display: flex;
+	gap: 10px;
+	margin-bottom: 20px;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.admin-tabs button {
+	background-color: #eee;
+	padding: 10px;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.admin-tabs button.active {
+	background-color: #d0e0ff;
+}
+
+.admin-content {
+	border: 1px solid #ccc;
+	padding: 20px;
+	border-radius: 8px;
+	min-width: 300px;
+	width: 100%;
+	max-width: 800px;
+	box-sizing: border-box;
+	text-align: center;
+}

@@ -5,7 +5,7 @@ import {
 	Route,
 	Navigate,
 } from "react-router-dom";
-import { Login } from "./pages/Login";
+import { AdminLogin } from "./pages/AdminLogin";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home";
 import PublicLayout from "./layouts/PublicLayout";
@@ -29,7 +29,7 @@ function App() {
 							token ? (
 								<Navigate to="/admin" />
 							) : (
-								<Login onLoginSuccess={handleLoginSuccess} />
+								<AdminLogin onLoginSuccess={handleLoginSuccess} />
 							)
 						}
 					/>

@@ -1,0 +1,27 @@
+.public-layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.public-layout-header {
+  flex-shrink: 0;
+}
+
+.public-layout-main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.public-layout-footer {
+  flex-shrink: 0;
+  background-color: #dddddd;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 20vh;
+  width: 100%;
+}

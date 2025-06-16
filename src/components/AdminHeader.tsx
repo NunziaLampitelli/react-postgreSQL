@@ -1,4 +1,3 @@
-// AdminHeader.tsx
 type Props = { onLogout: () => void };
 
 export default function AdminHeader({ onLogout }: Props) {

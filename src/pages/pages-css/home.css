@@ -1,6 +1,33 @@
 .home-page {
-  width: 100vw;
+  width: 80vw;
+  min-height: 80vh;
   margin: auto;
   display: flex;
-  justify-content: center
+  justify-content: center;
+  margin-top: 5px;
+  align-items: center;
+}
+
+.home-page > h1 {
+  color: #123955;
+  text-align: center;
+}
+
+.home-page > article {
+  flex: 2; 
+  height: 100%;
+  text-align: center;
+  color: #123955;
+}
+
+.home-page > img {
+  flex: 1; 
+  max-height: 500px;  
+  width: auto;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  margin-block: auto;
 }

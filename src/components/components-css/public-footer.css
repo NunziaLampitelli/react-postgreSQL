@@ -1,0 +1,34 @@
+.public-footer {
+  display: flex;
+  width: 100vw;
+  justify-content: space-around;
+  background-color: #DDDDDD;
+  align-items: center;
+}
+
+.public-footer-article {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.public-footer-article > a,
+.public-footer-nav > a {
+  text-decoration: unset;
+  color: black;
+}
+
+.public-footer-article > p {
+  margin: 0;
+}
+
+.public-footer-article > img {
+  width: 40px;
+  height: 40px;
+}
+
+.public-footer-nav {
+  display: flex;
+  flex-direction: column;
+}

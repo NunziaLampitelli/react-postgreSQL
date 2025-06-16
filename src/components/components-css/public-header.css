@@ -1,0 +1,35 @@
+.public-header {
+  margin: auto;
+  background-color: #A9C1D9;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+  box-shadow: 0px 5px 0px #98D1D3, inset 0px -5px 0px #E47126;
+  -webkit-box-shadow: 0px 5px 0px #98D1D3, inset 0px -5px 0px #E47126;
+  -moz-box-shadow: 0px 5px 0px #98D1D3, inset 0px -5px 0px #E47126;
+}
+
+.public-header-h2 {
+  color: #123955;
+}
+
+.public-header-nav {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5rem;
+}
+
+.public-header-nav > a {
+  color: #123955;
+  font-weight: bold;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.507);
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.2s linear;
+}
+
+.public-header-nav > a:hover {
+  border-bottom: 2px solid #E47126;
+}

@@ -1,24 +1,20 @@
-.login-page  {
-  width: 100vw;
-  height: 100vh;
-  margin: auto;
+.login-page {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
-
 .login-form {
-  display:flex;
-  width: 50vw;
-  height: 20vh;
   justify-content: space-around;
   text-align: center;
   align-items: center;
+  color: #123955;
 }
 
 .login-h1 {
-  margin-block: 3rem;
+  text-align: center;
+  color: #123955;
 }
 
 .login-email, .login-password {
@@ -28,3 +24,40 @@
   justify-content: space-around;
 }
 
+#email, #password  {
+  width: 20vw;
+  margin: auto;
+}
+
+.login-box {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 2px 2px 6px #123955cb;
+  min-width: 300px;
+  max-width: 400px;
+  width: 100%;
+  border: 1px solid #E47126;
+}
+
+.login-form-input {
+  border-color: #123955;
+  height: 2em;
+  width: 20vw;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.575);
+}
+  
+.login-button {
+  border-color: #123955;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-top: 1.2rem;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  font-weight: bold;
+  background-color: #98D1D3;
+}
+
+.login-button:active {
+  background-color: #E47126;
+}

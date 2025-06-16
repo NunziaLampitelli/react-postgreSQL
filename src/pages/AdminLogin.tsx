@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./pages-css/login.css";
 
-type LoginProps = {
+type AdminLoginProps = {
 	onLoginSuccess: (token: string) => void;
 };
-export function Login({ onLoginSuccess }: LoginProps) {
+export function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
@@ -22,16 +22,17 @@ export function Login({ onLoginSuccess }: LoginProps) {
 		const data = await res.json();
 
 		if (res.ok && data.message === "Login successful" && data.token) {
-			onLoginSuccess(data.token); 
+			onLoginSuccess(data.token);
 		} else {
 			setError(data.error || "Login error");
 		}
 	};
 
 	return (
-		<>
-			<div className="login-page">
-				<h1 className="login-h1">Log in</h1>
+		<div className="login-page">
+			<div className="login-box">
+				<h1 className="login-h1">Admin</h1>
+
 				<form className="login-form" onSubmit={handleSubmit}>
 					<article className="login-email">
 						<label htmlFor="email">Email</label>
@@ -60,12 +61,13 @@ export function Login({ onLoginSuccess }: LoginProps) {
 							required
 						/>
 					</article>
+
 					<button className="login-button" type="submit">
 						Login
 					</button>
 					{error && <p style={{ color: "red" }}>{error}</p>}
 				</form>
 			</div>
-		</>
+		</div>
 	);
 }

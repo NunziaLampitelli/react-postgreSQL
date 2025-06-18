@@ -1,0 +1,90 @@
+.rBis-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.h1-rBis {
+  color: blue;
+  font-size: 35px;
+  border-bottom: 4px solid #E47126;
+}
+
+.rBis-presentation {
+  width: 70%;
+  font-size: 20px;
+}
+.h2-rBis {
+  color: blue;
+  font-size: 25px;
+  text-align: center;
+}
+
+.rBis-page > p {
+  text-align: center;
+}
+
+.example-rBis {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch; 
+  gap: 2rem; 
+}
+
+.screen-rBis {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+  text-align: center;
+  background: #f9f9f9; 
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.screen-rBis > img, .screen-rBis > video {
+ width: 60%;
+ height: auto;
+}
+
+.screen-rBis > p {
+  width: 70%;
+  text-align: justify;
+}
+
+.screen-rBis > .h2-rBis {
+  text-align: center;
+  width: 50%;
+  padding-bottom: 1rem;
+}
+
+.ul-rBis {
+  border-bottom: 5px #98D1D3 solid;
+  padding-bottom: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .example-rBis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; 
+    gap: 2rem; 
+  }
+
+  .screen-rBis {
+    width: 100%;
+}
+.rBis-page p {
+   text-align: center;
+   width: 100%;
+}
+
+.screen-rBis > img, .screen-rBis > video {
+  width: 90%;
+ }
+}

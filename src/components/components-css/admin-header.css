@@ -1,0 +1,26 @@
+.adm-header {
+	width: 100vw;
+	background-color: #a9c1d9;
+	height: 10vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	box-shadow: 0px 5px 0px #98d1d3, inset 0px -5px 0px #e47126;
+	-webkit-box-shadow: 0px 5px 0px #98d1d3, inset 0px -5px 0px #e47126;
+	-moz-box-shadow: 0px 5px 0px #98d1d3, inset 0px -5px 0px #e47126;
+}
+
+.adm-header-h2 {
+	color: #123955;
+	font-size: 2rem;
+}
+
+.adm-header-article {
+	display: flex;
+	align-items: center;
+}
+
+.adm-logo {
+	width: 10%;
+	height: auto;
+}

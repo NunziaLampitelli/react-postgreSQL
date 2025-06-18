@@ -30,14 +30,14 @@
 }
 
 .login-box {
-  background-color: white;
+  background-color: #E47126;
+  border: 2px solid #123955;
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 2px 2px 6px #123955cb;
   min-width: 300px;
   max-width: 400px;
   width: 100%;
-  border: 1px solid #E47126;
 }
 
 .login-form-input {
@@ -48,16 +48,19 @@
 }
   
 .login-button {
-  border-color: #123955;
+  border: transparent solid 2px;
   border-radius: 6px;
   font-size: 1rem;
   margin-top: 1.2rem;
   padding-block: 0.5rem;
   padding-inline: 1rem;
   font-weight: bold;
-  background-color: #98D1D3;
+  background-color: #123955 ;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.377);
+  color: white;
 }
 
 .login-button:active {
-  background-color: #E47126;
+  background-color: #98D1D3;
+  border: solid 2px #123955;
 }

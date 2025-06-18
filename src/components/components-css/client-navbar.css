@@ -1,0 +1,13 @@
+.client-navbar {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.client-navbar-link {
+  color: #777777;
+}
+
+.client-navbar-link:hover {
+  cursor: pointer;
+}

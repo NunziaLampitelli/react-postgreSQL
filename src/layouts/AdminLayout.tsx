@@ -1,17 +1,17 @@
 import { Outlet } from "react-router-dom";
 import AdminHeader from "../components/AdminHeader";
+import PublicFooter from "../components/PublicFooter";
 
-type Props = {
-	onLogout: () => void;
-};
 
-export default function AdminLayout({ onLogout }: Props) {
+
+export default function AdminLayout() {
 	return (
 		<div>
-			<AdminHeader onLogout={onLogout} />
+			<AdminHeader />
 			<main>
 				<Outlet />
 			</main>
+			<PublicFooter />			
 		</div>
 	);
 }

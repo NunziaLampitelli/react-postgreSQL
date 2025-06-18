@@ -14,12 +14,12 @@ export default function PublicFooter({ className }: PublicFooterProps) {
 			<section className="public-footer-info">
 				<article className="public-footer-article">
 					<img src={MailIcon} alt="icon" />
-					<a href="mailto:esempio@dominio.com">postgresql@mail.com</a>
+					<a href="mailto:example@mail.com">postgresql@mail.com</a>
 				</article>
 
 				<article className="public-footer-article">
 					<img src={PhoneIcon} alt="icon" />
-					<a href="tel:+391234567890">+46 123 456 7890</a>
+					<a href="tel:+1247596210">+46 123 456 7890</a>
 				</article>
 
 				<article className="public-footer-article">

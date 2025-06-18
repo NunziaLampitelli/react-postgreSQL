@@ -24,11 +24,25 @@
 }
 
 .public-footer-article > img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
 .public-footer-nav {
   display: flex;
   flex-direction: column;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .public-footer {
+    font-size: 10px;
+    flex-direction: column;
+    height: fit-content;
+  }
+  .public-footer-article > img {
+    width: 20px;
+    height: 20px;
+  }
+  
 }

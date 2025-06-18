@@ -1,10 +1,23 @@
-type Props = { onLogout: () => void };
+import "./components-css/admin-header.css";
+import { Link } from "react-router-dom";
+import Logo from "../assets/postgresql.png";
 
-export default function AdminHeader({ onLogout }: Props) {
+
+
+export default function AdminHeader() {
 	return (
-		<header style={{ background: "#003366", color: "white", padding: "10px" }}>
+		<header className="adm-header" >
+			<article className="adm-header-article">
+
+				<img className="adm-logo" src={Logo} alt="" />
+				<Link to="/" className="adm-header-h2">
+					PostgreSQL
+				</Link>
+			</article>
+
 			<h2>Admin area</h2>
-			<button onClick={onLogout}>Logout</button>
+			
 		</header>
 	);
 }
+

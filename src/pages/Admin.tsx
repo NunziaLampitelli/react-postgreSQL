@@ -6,6 +6,7 @@ import PurchaseHistory from "../components/PurchaseHistory";
 import type { User, Product, PurchaseDetail } from "../types";
 import "./pages-css/admin.css";
 
+
 type AdminProps = {
 	onLogout: () => void;
 };
@@ -64,7 +65,7 @@ export default function Admin({ onLogout }: AdminProps) {
 
 	const addUser = async (name: string, email: string) => {
 		try {
-			await fetch("*/api/api.php?action=users", {
+			await fetch("https://*/api.php?action=users", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ name, email }),
@@ -100,7 +101,7 @@ export default function Admin({ onLogout }: AdminProps) {
 		} catch (error) {
 			console.error("Logout failed:", error);
 		}
-		onLogout();
+		onLogout(); // 
 	};
 
 	useEffect(() => {
@@ -111,7 +112,7 @@ export default function Admin({ onLogout }: AdminProps) {
 
 	return (
 		<div className="admin-container">
-			<div className="admin-header">
+			<div className="admin-title">
 				<h1>Admin Panel</h1>
 				<button onClick={handleLogout}>Logout</button>
 			</div>

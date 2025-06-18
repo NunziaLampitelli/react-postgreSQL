@@ -13,6 +13,7 @@
 
 .public-header-h2 {
   color: #123955;
+  font-size: 2rem;
 }
 
 .public-header-nav {
@@ -32,4 +33,21 @@
 
 .public-header-nav > a:hover {
   border-bottom: 2px solid #E47126;
+}
+
+.public-header-article {
+  display: flex;
+  align-items: center;
+}
+
+#header-logo {
+  width: 10%;
+  height: auto;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .public-header-nav > a {
+    font-size: 14px;
+  }
 }

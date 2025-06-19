@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./components-css/client-person-list.css";
 
 type Person = {
 	person_id: string;
@@ -22,11 +23,14 @@ export default function ClientPersonList({ onSelectPerson }: Props) {
 				return;
 			}
 			try {
-				const response = await fetch("https://*/api/person_api.php", {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
+				const response = await fetch(
+					"https://*/api/person_api.php",
+					{
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					}
+				);
 				const data = await response.json();
 				if (!response.ok) {
 					alert(data.error || "Error fetching persons");
@@ -42,21 +46,35 @@ export default function ClientPersonList({ onSelectPerson }: Props) {
 	}, [token]);
 
 	return (
-		<div>
-			<h3>List of Persons</h3>
-			<ul>
-				{persons.length === 0 && <li>No persons found.</li>}
-				{persons.map((person) => (
-					<li
-						key={person.person_id}
-						onClick={() => onSelectPerson(person)}
-						style={{ cursor: "pointer" }}
-						title="Click to edit"
-					>
-						{person.name} {person.surname || ""} - {person.company || ""}
-					</li>
-				))}
-			</ul>
+		<div className="client-person-list-page">
+			<h3 className="person-list-h3">Person list</h3>
+			{persons.length === 0 ? (
+				<p>No persons found.</p>
+			) : (
+				<table className="person-table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Company</th>
+						</tr>
+					</thead>
+					<tbody>
+						{persons.map((person) => (
+							<tr
+								key={person.person_id}
+								onClick={() => onSelectPerson(person)}
+								style={{ cursor: "pointer" }}
+								title="Click to edit"
+							>
+								<td>{person.person_id}</td>
+								<td>{person.name}</td>
+								<td>{person.company || "-"}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			)}
 		</div>
 	);
 }

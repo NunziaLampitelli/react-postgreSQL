@@ -1,0 +1,33 @@
+.person-table {
+  width: 50%;
+  border-collapse: collapse;
+  margin-top: 0;
+  margin-left: 2rem;
+  font-family: sans-serif;
+}
+
+.person-list-h3 {
+  color: blue;
+    background-color: #a9c1d9;
+    width: 50%;
+    margin-left: 2rem;
+    margin-bottom: 0;
+    padding-block: 1rem;
+    border-top: 4px solid #F87431;
+}
+
+.person-table th,
+.person-table td {
+  border: 1px solid #514F4F;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.person-table th {
+  background-color: #EEEEEE;
+  color: #123955;
+}
+
+.person-table tr:hover {
+  background-color: #A9C1D9;
+}

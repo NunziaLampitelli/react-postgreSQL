@@ -4,9 +4,15 @@ import ClientNavbar from "../components/ClientNavbar";
 import ClientSubMenu from "../components/ClientSubMenu";
 import ClientEditPersonForm from "../components/ClientEditPersonForm";
 import ClientPersonList from "../components/ClientPersonList";
+import MaterialSubMenu from "../components/MaterialSubMenu";
+import ClientMaterialCalendar from "../components/ClientMaterialCalendar";
+import ClientProducts from "../components/ClientProducts";
+import ClientPurchases from "../components/ClientPurchases";
+import ClientProductsSubMenu from "../components/ClientProductsSubMenu"; 
 
 type ClientDashboardProps = {
 	onLogout: () => void;
+	token: string;
 };
 
 export type Person = {
@@ -16,7 +22,10 @@ export type Person = {
 	company?: string;
 };
 
-export default function ClientDashboard({ onLogout }: ClientDashboardProps) {
+export default function ClientDashboard({
+	onLogout,
+	token,
+}: ClientDashboardProps) {
 	const [mainSection, setMainSection] = useState("start");
 	const [subSection, setSubSection] = useState("");
 	const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
@@ -46,22 +55,67 @@ export default function ClientDashboard({ onLogout }: ClientDashboardProps) {
 			<ClientNavbar onSelect={setMainSection} selected={mainSection} />
 			<button onClick={onLogout}>Logout</button>
 
-			{mainSection === "contacts" && (
-				<ClientSubMenu onSelect={setSubSection} selected={subSection} />
-			)}
-
 			<div className="client-content">
-				{mainSection === "start" && <p>Welcome</p>}
+				{mainSection === "start" && <p>Welcome!</p>}
 
-				{mainSection === "contacts" && subSection === "list" && (
-					<ClientPersonList onSelectPerson={handleSelectPerson} />
+				{mainSection === "products" && (
+					<>
+						<ClientProductsSubMenu onSelect={setSubSection} selected={subSection} />
+
+						{subSection === "purchase" && (
+							<ClientProducts
+								token={token}
+								onPurchaseSuccess={() => alert("Thank you!")}
+							/>
+						)}
+
+						{subSection === "history" && (
+							<ClientPurchases
+								token={token}
+								onChange={() => {
+								}}
+							/>
+						)}
+
+						{!subSection && <p>Select an option</p>}
+					</>
 				)}
 
-				{mainSection === "contacts" && subSection === "edit" && (
-					<ClientEditPersonForm
-						person={personForEdit}
-						onSaved={handleFormSaved}
+				{mainSection === "purchases" && (
+					<ClientPurchases
+						token={token}
+						onChange={() => {
+
+						}}
 					/>
+				)}
+
+				{mainSection === "contacts" && (
+					<>
+						<ClientSubMenu onSelect={setSubSection} selected={subSection} />
+
+						{subSection === "list" && (
+							<ClientPersonList onSelectPerson={handleSelectPerson} />
+						)}
+
+						{subSection === "edit" && (
+							<ClientEditPersonForm
+								person={personForEdit}
+								onSaved={handleFormSaved}
+							/>
+						)}
+					</>
+				)}
+
+				{mainSection === "materials" && (
+					<>
+						<MaterialSubMenu onSelect={setSubSection} selected={subSection} />
+
+						{subSection === "home" && <p>Material Orders Home</p>}
+						{subSection === "list" && <p>Material Orders List</p>}
+						{subSection === "calendar" && <ClientMaterialCalendar />}
+						{subSection === "edit" && <p>Material Orders Edit</p>}
+					</>
 				)}
 			</div>
 		</>

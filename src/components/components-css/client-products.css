@@ -1,0 +1,60 @@
+.client-products {
+  max-width: 400px;
+  margin: 30px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9f9f9;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.client-products h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.client-products label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 600;
+  color: #555;
+}
+
+.client-products input[type="text"],
+.client-products select {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.client-products input[type="text"]:focus,
+.client-products select:focus {
+  border-color: #4285f4;
+  outline: none;
+}
+
+.client-products select.product-dropdown {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.client-products button {
+  margin-top: 15px;
+  background-color: #4285f4;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.client-products button:hover {
+  background-color: #3367d6;
+}

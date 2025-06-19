@@ -1,12 +1,12 @@
-import "./components-css/client-submenu.css"
+import "./components-css/client-submenu.css";
 
 type Props = {
 	onSelect: (sub: string) => void;
 	selected: string;
 };
 
-export default function SubMenu({ onSelect, selected }: Props) {
-	const options = ["home", "list", "edit", "note"];
+export default function ClientProductsSubMenu({ onSelect, selected }: Props) {
+	const options = ["purchase", "history"];
 
 	return (
 		<nav className="client-submenu">
@@ -16,7 +16,7 @@ export default function SubMenu({ onSelect, selected }: Props) {
 					className={`submenu-button ${selected === option ? "active" : ""}`}
 					onClick={() => onSelect(option)}
 				>
-					Person {option.charAt(0).toUpperCase() + option.slice(1)}
+				 {option.charAt(0).toUpperCase() + option.slice(1)}
 				</button>
 			))}
 		</nav>

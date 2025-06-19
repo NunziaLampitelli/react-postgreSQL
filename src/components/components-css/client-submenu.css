@@ -1,0 +1,15 @@
+.client-submenu {
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+.submenu-button {
+ color: blue;
+    border: none;
+    background-color: #F8F6F6;
+    font-size: 18px
+}
+
+.submenu-button:hover {
+  cursor: pointer;
+}

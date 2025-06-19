@@ -66,7 +66,9 @@ function App() {
 				{clientToken && (
 					<Route
 						path="/dashboard"
-						element={<ClientDashboard onLogout={handleLogout} />}
+						element={
+							<ClientDashboard token={clientToken} onLogout={handleLogout} />
+						}
 					/>
 				)}
 				{!clientToken && (

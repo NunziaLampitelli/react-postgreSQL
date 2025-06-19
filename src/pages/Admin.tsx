@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import UsersTable from "../components/UsersTable";
+import AdminClients from "../components/AdminClients";
 import AddUserForm from "../components/AddUserForm";
 import PurchaseForm from "../components/PurchaseForm";
-import PurchaseHistory from "../components/PurchaseHistory";
+import AdminPurchaseHistory from "../components/AdminPurchaseHistory";
+import AdminProducts from "../components/AdminProducts"; 
 import type { User, Product, PurchaseDetail } from "../types";
 import "./pages-css/admin.css";
-
 
 type AdminProps = {
 	onLogout: () => void;
@@ -13,26 +13,31 @@ type AdminProps = {
 
 export default function Admin({ onLogout }: AdminProps) {
 	const [activeTab, setActiveTab] = useState<
-		"users" | "addUser" | "purchases" | "history"
-	>("users");
-	const [users, setUsers] = useState<User[]>([]);
+		"clients" | "addClient" | "purchases" | "history" | "products"
+	>("clients");
+
+	const [clients, setClients] = useState<User[]>([]);
 	const [products, setProducts] = useState<Product[]>([]);
 	const [purchaseDetails, setPurchaseDetails] = useState<PurchaseDetail[]>([]);
 	const [message, setMessage] = useState("");
 
-	const fetchUsers = async () => {
+	const fetchClients = async () => {
 		try {
-			const res = await fetch("https://*/api/api.php?action=users");
+			const res = await fetch(
+				"https://*/api/api.php?action=users"
+			);
 			const data = await res.json();
-			setUsers(data);
+			setClients(data);
 		} catch (error) {
-			console.error("Error fetching users:", error);
+			console.error("Error fetching clients:", error);
 		}
 	};
 
 	const fetchProducts = async () => {
 		try {
-			const res = await fetch("https://*/api/api.php?action=products");
+			const res = await fetch(
+				"https://*/api/api.php?action=products"
+			);
 			const data = await res.json();
 			setProducts(data);
 		} catch (error) {
@@ -42,7 +47,9 @@ export default function Admin({ onLogout }: AdminProps) {
 
 	const fetchPurchaseDetails = async () => {
 		try {
-			const res = await fetch("https://*/api/api.php?action=purchasedetails");
+			const res = await fetch(
+				"https://*/api/api.php?action=purchasedetails"
+			);
 			const data = await res.json();
 			setPurchaseDetails(data);
 		} catch (error) {
@@ -50,39 +57,42 @@ export default function Admin({ onLogout }: AdminProps) {
 		}
 	};
 
-	const deleteUser = async (id: number) => {
+	const deleteClient = async (id: number) => {
 		try {
 			await fetch("https://*/api/api.php?action=users", {
 				method: "DELETE",
 				headers: { "Content-Type": "application/x-www-form-urlencoded" },
-				body: `id=${id}`,
+				body: `id=${id}`, 
 			});
-			fetchUsers();
+			fetchClients();
 		} catch (error) {
-			console.error("Error deleting user:", error);
+			console.error("Error deleting client:", error);
 		}
 	};
 
-	const addUser = async (name: string, email: string) => {
+	const addClient = async (name: string, email: string) => {
 		try {
-			await fetch("https://*/api.php?action=users", {
+			await fetch("https://*/api/api.php?action=users", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ name, email }),
 			});
-			fetchUsers();
+			fetchClients();
 		} catch (error) {
-			console.error("Error adding user:", error);
+			console.error("Error adding client:", error);
 		}
 	};
 
 	const addPurchase = async (userId: number, productId: number) => {
 		try {
-			const res = await fetch("https://*/api/api.php?action=purchases", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ user_id: userId, product_id: productId }),
-			});
+			const res = await fetch(
+				"https://*/api/api.php?action=purchases",
+				{
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ user_id: userId, product_id: productId }),
+				}
+			);
 			const data = await res.json();
 			setMessage(data.message || "Purchase registered");
 			fetchPurchaseDetails();
@@ -101,11 +111,11 @@ export default function Admin({ onLogout }: AdminProps) {
 		} catch (error) {
 			console.error("Logout failed:", error);
 		}
-		onLogout(); // 
+		onLogout();
 	};
 
 	useEffect(() => {
-		fetchUsers();
+		fetchClients();
 		fetchProducts();
 		fetchPurchaseDetails();
 	}, []);
@@ -119,16 +129,16 @@ export default function Admin({ onLogout }: AdminProps) {
 
 			<div className="admin-tabs">
 				<button
-					className={activeTab === "users" ? "active" : ""}
-					onClick={() => setActiveTab("users")}
+					className={activeTab === "clients" ? "active" : ""}
+					onClick={() => setActiveTab("clients")}
 				>
-					Users
+					Clients
 				</button>
 				<button
-					className={activeTab === "addUser" ? "active" : ""}
-					onClick={() => setActiveTab("addUser")}
+					className={activeTab === "addClient" ? "active" : ""}
+					onClick={() => setActiveTab("addClient")}
 				>
-					Add User
+					Add Client
 				</button>
 				<button
 					className={activeTab === "purchases" ? "active" : ""}
@@ -142,24 +152,31 @@ export default function Admin({ onLogout }: AdminProps) {
 				>
 					Purchase History
 				</button>
+				<button
+					className={activeTab === "products" ? "active" : ""}
+					onClick={() => setActiveTab("products")}
+				>
+					Products
+				</button>
 			</div>
 
 			<div className="admin-content">
-				{activeTab === "users" && (
-					<UsersTable users={users} onDeleteUser={deleteUser} />
+				{activeTab === "clients" && (
+					<AdminClients users={clients} onDeleteUser={deleteClient} />
 				)}
-				{activeTab === "addUser" && <AddUserForm onAddUser={addUser} />}
+				{activeTab === "addClient" && <AddUserForm onAddUser={addClient} />}
 				{activeTab === "purchases" && (
 					<PurchaseForm
-						users={users}
+						users={clients}
 						products={products}
 						onAddPurchase={addPurchase}
 						message={message}
 					/>
 				)}
 				{activeTab === "history" && (
-					<PurchaseHistory purchaseDetails={purchaseDetails} />
+					<AdminPurchaseHistory purchaseDetails={purchaseDetails} />
 				)}
+				{activeTab === "products" && <AdminProducts />}
 			</div>
 		</div>
 	);

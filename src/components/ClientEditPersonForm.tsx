@@ -156,45 +156,130 @@ export default function ClientEditPersonForm({ person, onSaved }: Props) {
 
 	return (
 		<form className="edit-person-form" onSubmit={handleSubmit}>
-			<h3>{isEditing ? "Edit" : "New"}</h3>
+			<h3>Edit</h3>
 
-			{isEditing && (
-				<label>
-					PERSON ID:
+			<div className="input-group-top">
+				<label>Person ID:</label>
+				<input
+					type="text"
+					name="person_id"
+					value={formData.person_id ?? ""}
+					disabled
+				/>
+			</div>
+			<div className="input-group-top">
+				<label>Name:</label>
+				<input
+					type="text"
+					name="name"
+					value={formData.name}
+					onChange={handleChange}
+				/>
+			</div>
+
+			<div className="form-grid">
+				<div className="form-column">
+					{["company", "town", "work_phone", "email"].map((field) => (
+						<div className="input-group" key={field}>
+							<label>
+  {field.replace("_", " ").replace(/^\w/, c => c.toUpperCase()) + ":"}
+</label>
+							<input
+								type={field === "email" ? "email" : "text"}
+								name={field}
+								value={(formData as any)[field]}
+								onChange={handleChange}
+							/>
+						</div>
+					))}
+				</div>
+
+				<div className="form-column">
+					{["address", "state", "home_phone", "category"].map((field) => (
+						<div className="input-group" key={field}>
+							<label>
+  {field.replace("_", " ").replace(/^\w/, c => c.toUpperCase()) + ":"}
+</label>
+							<input
+								type="text"
+								name={field}
+								value={(formData as any)[field]}
+								onChange={handleChange}
+							/>
+						</div>
+					))}
+				</div>
+
+				<div className="form-column">
+					{["postal_code", "country", "cell_phone"].map((field) => (
+						<div className="input-group" key={field}>
+							<label>
+  {field.replace("_", " ").replace(/^\w/, c => c.toUpperCase()) + ":"}
+</label>
+							<input
+								type="text"
+								name={field}
+								value={(formData as any)[field]}
+								onChange={handleChange}
+							/>
+						</div>
+					))}
+				</div>
+			</div>
+
+			<div className="textarea-section">
+				<div className="input-group">
+					<label>Note:</label>
+					<textarea
+						name="note"
+						value={formData.note || ""}
+						onChange={(event) => handleChange(event as any)}
+					/>
+				</div>
+			</div>
+
+			<div className="extra-info">
+				<div className="input-group">
+					<label>Status:</label>
 					<input
 						type="text"
-						name="person_id"
-						value={formData.person_id ?? ""}
-						disabled
+						name="status"
+						value={formData.status || ""}
+						onChange={handleChange}
 					/>
-				</label>
-			)}
+				</div>
+				<div className="input-group">
+					<label>Version:</label>
+					<input
+						type="text"
+						name="version"
+						value={formData.version || ""}
+						onChange={handleChange}
+					/>
+				</div>
+			</div>
 
-			{Object.keys(initialState).map((key) => {
-				if (key === "person_id") return null;
-				return (
-					<label key={key}>
-						{key.replace("_", " ").toUpperCase()}:
-						<input
-							type={key === "email" ? "email" : "text"}
-							name={key}
-							value={(formData as any)[key] || ""}
-							onChange={handleChange}
-						/>
-					</label>
-				);
-			})}
+			<div className="last-row">
+				<div>
+					<strong>Last updated:</strong>
+				</div>
 
-			<div className="form-buttons">
-				<button type="button" onClick={handleNew}>
-					New
-				</button>
-				<button type="submit">Save</button>
-				{isEditing && (
-					<button type="button" onClick={handleDelete}>
+				<div className="form-buttons">
+					<button type="button" onClick={handleNew}>
+						New
+					</button>
+					<button type="submit">Save</button>
+					<button type="button" onClick={() => alert("Edit clicked")}>
+						Edit
+					</button>
+					<button
+						type="button"
+						onClick={handleDelete}
+						disabled={!formData.person_id}
+					>
 						Delete
 					</button>
-				)}
+				</div>
 			</div>
 		</form>
 	);

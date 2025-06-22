@@ -22,7 +22,7 @@ export default function ClientProducts({ token, onPurchaseSuccess }: Props) {
 				const res = await fetch(
 					"https://*/api/api.php?action=products"
 				);
-				if (!res.ok) throw new Error("Errore caricamento prodotti");
+				if (!res.ok) throw new Error("Error loading products");
 				const data = await res.json();
 				setProducts(data);
 			} catch (e) {
@@ -37,7 +37,7 @@ export default function ClientProducts({ token, onPurchaseSuccess }: Props) {
 	async function handlePurchase(productId: number) {
 		try {
 			const res = await fetch(
-				"https://pgdemo.ntig.tech/api/client_purchases_api.php",
+				"https://*/api/client_purchases_api.php",
 				{
 					method: "POST",
 					headers: {
@@ -50,7 +50,7 @@ export default function ClientProducts({ token, onPurchaseSuccess }: Props) {
 			const data = await res.json();
 
 			if (!res.ok) {
-				alert("Errore: " + (data.error || "Not possible to purchase"));
+				alert("Error: " + (data.error || "Not possible to purchase"));
 				return;
 			}
 			alert("Purchase successful!");
